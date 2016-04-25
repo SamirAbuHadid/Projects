@@ -1,0 +1,15 @@
+﻿@model MStrudel.WebUI.Models.NavViewModel
+
+@Html.ActionLink("Показати все", "Index", "Product", new {categoryId = 0, page = 1 }, new { @class = "btn btn-block btn-default btn-lg" })
+
+@foreach(var link in Model.Categories)
+{
+	@Html.RouteLink(link.Name, new
+		{
+			controller = "Product",
+			action = "Index",
+			categoryId = link.CategoryId
+		},
+		new { @class = "btn btn-block btn-default btn-lg" + (link.CategoryId == ViewBag.SelectedCategory ? " btn-primary" : "") })
+}
+

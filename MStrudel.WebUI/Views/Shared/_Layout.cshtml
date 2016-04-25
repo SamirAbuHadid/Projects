@@ -1,0 +1,53 @@
+﻿<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>@ViewBag.Title - Майстерня Штрудельня</title>
+	
+		<link href="~/Content/bootstrap.css" rel="stylesheet" />
+		<link href="~/Content/bootstrap-theme.css" rel="stylesheet" />
+		<link href="~/Content/ErrorStyles.css" rel="stylesheet" />
+
+		<script src="~/Scripts/jquery-2.1.4.js"></script>
+		<script src="~/Scripts/bootstrap.js"></script>
+	</head>
+	<body>
+		<div class="navbar navbar-inverse ">
+			<div class="container">
+				<div class="navbar-header">
+					@Html.ActionLink("Майстерня Штрудельня", "Index", "Home", null, new { @class = "navbar-brand" })
+				</div>
+				<ul class="nav navbar-nav navbar-collapse collapse">
+					<li>@Html.ActionLink("Замовлення і доставка", "About", "Home")</li>
+					<li>@Html.ActionLink("Контакти", "Contact", "Home")</li>
+					<li class="dropdown">
+						<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+							Адміністрування
+							<span class="caret"></span>
+						</a>
+						<ul class="dropdown-menu">
+							<li><a>@Html.ActionLink("Продукція", "Index", "Admin")</a></li>
+							<li><a>@Html.ActionLink("Катерорії", "Index", "Category")</a></li>
+							<li><a>@Html.ActionLink("Замовлення", "Index", "Order")</a></li>
+						</ul>
+					</li>
+				</ul>
+
+				@Html.Action("Summary", "Cart")
+			</div>
+		</div>
+		<div class="row panel">
+			<div id="categories" class="col-xs-3">
+				@Html.Action("Menu", "Nav")
+			</div>
+			<div class="col-xs-8">
+				@RenderBody()
+				<hr />
+				<footer>
+					<p>&copy; @DateTime.Now.Year - Майстерня Штрудельня</p>
+				</footer>
+			</div>
+		</div>
+	</body>
+</html>

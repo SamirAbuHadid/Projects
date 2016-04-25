@@ -1,0 +1,36 @@
+﻿@using MStrudel.WebUI.HtmlHelpers
+
+@model MStrudel.WebUI.Models.ProductListViewModel
+
+@{
+    ViewBag.Title = "Штруделі";
+}
+
+@foreach(var p in Model.Products)
+{
+	//style="height:inherit;"
+	<div class="well clearfix">
+		<div class="pull-left" style="margin-right: 10px">
+			@if(p.ImageData != null)
+			{
+				<img class="img-thumbnail" height="200" width="200" style="float:none" src="@Url.Action("GetImage", "Product", new { p.ProductID })" />
+			}
+			else
+			{
+				<img class="img-thumbnail" height="200" width="200" style="float:none" src="~/Content/Images/NoPic.jpg" />
+			}
+		</div>
+		<h3>
+			<strong>@p.Name</strong>
+			<span class="pull-right label label-primary ">@p.Price.ToString("c")</span>
+		</h3>
+		<a href="@Url.Action("AddToCart", "Cart", new {productId = p.ProductID, returnUrl = Request.Url.PathAndQuery })" class="btn btn-warning pull-right">
+			<span class="glyphicon glyphicon-shopping-cart pull-right" />
+		</a>
+		<span class="lead" style="white-space: pre-wrap; font-size:medium ">@p.Description</span>
+	</div>
+}
+
+<div class="btn-group pull-right">
+	@Html.PageLinks(Model.PagingInfo, x => Url.Action("Index", new { categoryId = Model.CurrentCategory, page = x }))
+</div> 
