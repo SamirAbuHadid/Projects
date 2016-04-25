@@ -1,0 +1,71 @@
+﻿@model MStrudel.WebUI.Models.CartListViewModel
+
+@{
+    ViewBag.Title = "Ваш кошик";
+}
+
+<h4>Ваш кошик</h4>
+<table class="table">
+	<thead>
+		<tr>
+			<th></th>
+			<th class="text-center" width="20">Кількість</th>
+			<th></th>
+			<th>Продукт</th>
+			<th class="text-right">Ціна</th>
+			<th class="text-right">Сума</th>
+		</tr>
+	</thead>
+	<tbody>
+		@foreach(var item in Model.Cart.Lines)
+		{
+			<tr>
+				<td>
+					<a href="@Url.Action("ChangeQuantity", "Cart", new { productId = item.Product.ProductID, quantity = -1 })">
+						<span class="glyphicon glyphicon-minus pull-right" />
+					</a>
+				</td>
+				<td class="text-center">@item.Quantity</td>
+				<td>
+					<a href="@Url.Action("ChangeQuantity", "Cart", new { productId = item.Product.ProductID, quantity = 1 })">
+						<span class="glyphicon glyphicon-plus pull-left"/>
+					</a>
+				</td>
+				<td class="text-left">@item.Product.Name</td>
+				<td class="text-right">@item.Product.Price.ToString("c")</td>
+				<td class="text-right">@((item.Quantity * item.Product.Price).ToString("c"))</td>
+				<td>
+					<a href="@Url.Action("RemoveFromCart", "Cart", new { productId = item.Product.ProductID, returnUrl = Request.Url.PathAndQuery })" class="btn btn-danger pull-right">
+						<span class="glyphicon glyphicon-trash pull-right" />
+					</a>
+				</td>
+			</tr>
+		}
+	</tbody>
+	<tfoot>
+		<tr>
+			<td class="text-right" colspan="5"><b>Всього:</b></td>
+			<td class="text-right"><b>@Model.Cart.TotalValue().ToString("c")</b></td>
+		</tr>
+	</tfoot>
+</table>
+
+<div class="text-center">    
+	<a class="btn btn-primary" href="@Model.ReturnUrl">Продовжити покупки</a> 
+	@Html.ActionLink("Замовити", "AddOrder", "Order", new { cart = Model.Cart }, new { @class = "btn btn-primary" })
+</div>
+
+@*<script type="text/javascript">
+	$(document).ready(function () {
+		$('#Quantity').change(function () {
+			alert('Quantity changed');
+		});
+	});
+</script>*@
+<script type="text/javascript">
+	$(document).ready(function () {
+		$(document).on('change', 'input', function () {
+			alert('Quantity changed'+'1');
+		});
+	});
+</script>
