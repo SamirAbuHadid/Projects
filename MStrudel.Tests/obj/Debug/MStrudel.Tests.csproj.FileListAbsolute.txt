@@ -5,3 +5,10 @@ D:\Projects\MStrudel\MStrudel.Tests\obj\Debug\MStrudel.Tests.dll
 D:\Projects\MStrudel\MStrudel.Tests\obj\Debug\MStrudel.Tests.pdb
 D:\Projects\MStrudel\MStrudel.Tests\bin\Debug\Microsoft.VisualStudio.QualityTools.UnitTestFramework.dll
 D:\Projects\MStrudel\MStrudel.Tests\bin\Debug\Microsoft.VisualStudio.QualityTools.UnitTestFramework.xml
+D:\Workspace\Projects\MStrudel.Tests\bin\Debug\MStrudel.Tests.dll
+D:\Workspace\Projects\MStrudel.Tests\bin\Debug\MStrudel.Tests.pdb
+D:\Workspace\Projects\MStrudel.Tests\bin\Debug\Microsoft.VisualStudio.QualityTools.UnitTestFramework.dll
+D:\Workspace\Projects\MStrudel.Tests\bin\Debug\Microsoft.VisualStudio.QualityTools.UnitTestFramework.xml
+D:\Workspace\Projects\MStrudel.Tests\obj\Debug\MStrudel.Tests.csprojResolveAssemblyReference.cache
+D:\Workspace\Projects\MStrudel.Tests\obj\Debug\MStrudel.Tests.dll
+D:\Workspace\Projects\MStrudel.Tests\obj\Debug\MStrudel.Tests.pdb
