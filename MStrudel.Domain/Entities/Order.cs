@@ -1,10 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Web.Mvc;
 
 namespace MStrudel.Domain.Entities
@@ -36,9 +32,7 @@ namespace MStrudel.Domain.Entities
 		[EmailAddress(ErrorMessage="Введіть правильний e-mail")]
 		public string Email { get; set; }
 
-		//[Required(ErrorMessage = "Будь ласка введіть час доставки")]
 		[Display(Name = "Дата доставки")]
-		//[DataType(DataType.Date)]
 		[DisplayFormat(DataFormatString = "{0:dd.MM.yyyy}", ApplyFormatInEditMode = true)]
 		public DateTime? DeliveryTime { get; set; }
 
@@ -55,10 +49,7 @@ namespace MStrudel.Domain.Entities
 		public int ProductId { get; set; }
 		public int Quantity { get; set; }
 		public decimal Price { get; set; }
-
 		public virtual Order Order { get; set; }
-
-		//[ForeignKey("ProductId")]
 		public virtual Product Product { get; set; }
 	}
 }

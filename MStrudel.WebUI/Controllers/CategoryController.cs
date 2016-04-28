@@ -1,57 +1,54 @@
 ﻿using MStrudel.Domain.Abstract;
 using MStrudel.Domain.Entities;
-using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 
 namespace MStrudel.WebUI.Controllers
 {
     public class CategoryController : Controller
     {
-		private ICategoriesRepository _categoryRepository;
+        private ICategoriesRepository _categoryRepository;
 
-		public CategoryController(ICategoriesRepository repository)
-		{
-			_categoryRepository = repository;
-		}
+        public CategoryController(ICategoriesRepository repository)
+        {
+            _categoryRepository = repository;
+        }
 
         public ActionResult Index()
         {
-			return View(_categoryRepository.Categories.OrderBy(c => c.SortId));
+            return View(_categoryRepository.Categories.OrderBy(c => c.SortId));
         }
 
-		public ActionResult Edit(int categoryId)
-		{
-			Category model = _categoryRepository.Categories.FirstOrDefault(c => c.CategoryId == categoryId);
+        public ActionResult Edit(int categoryId)
+        {
+            Category model = _categoryRepository.Categories.FirstOrDefault(c => c.CategoryId == categoryId);
 
-			if(model == null)
-			{
-				model = new Category();
-			}
+            if(model == null)
+            {
+                model = new Category();
+            }
 
-			return View(model);
-		}
+            return View(model);
+        }
 
-		[HttpPost]
-		public ActionResult Edit(Category category)
-		{
-			if(ModelState.IsValid)
-			{
-				_categoryRepository.SaveCategory(category);
-			}
-			return RedirectToAction("Index", "Category");
-		}
+        [HttpPost]
+        public ActionResult Edit(Category category)
+        {
+            if(ModelState.IsValid)
+            {
+                _categoryRepository.SaveCategory(category);
+            }
+            return RedirectToAction("Index", "Category");
+        }
 
-		public ActionResult Delete(int categoryId)
-		{
-			if(categoryId != 0)
-			{
-				_categoryRepository.DeleteCategory(categoryId);
-			}
+        public ActionResult Delete(int categoryId)
+        {
+            if(categoryId != 0)
+            {
+                _categoryRepository.DeleteCategory(categoryId);
+            }
 
-			return RedirectToAction("Index");
-		}
-	}
+            return RedirectToAction("Index");
+        }
+    }
 }
