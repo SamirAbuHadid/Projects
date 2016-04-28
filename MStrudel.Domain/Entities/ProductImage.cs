@@ -4,20 +4,20 @@ using System.Web.Mvc;
 
 namespace MStrudel.Domain.Entities
 {
-	[Table("ProductImages")]
-	public class ProductImage
-	{
-		[Key]
-		[HiddenInput(DisplayValue = false)]
-		public int ImageID { get; set; }
+    [Table("ProductImages")]
+    public class ProductImage
+    {
+        [Key]
+        [HiddenInput(DisplayValue = false)]
+        public int ImageID { get; set; }
 
-		[HiddenInput(DisplayValue = false)]
-		public int ProductID { get; set; }
+        [HiddenInput(DisplayValue = false)]
+        public int ProductID { get; set; }
 
-		[HiddenInput(DisplayValue = false)]
-		public byte[] ImageData { get; set; }
+        [HiddenInput(DisplayValue = false)]
+        public byte[] ImageData { get; set; }
 
-		[HiddenInput(DisplayValue = false)]
-		public string ImageMimeType { get; set; }
-	}
+        [HiddenInput(DisplayValue = false)]
+        public string ImageMimeType { get; set; }
+    }
 }
