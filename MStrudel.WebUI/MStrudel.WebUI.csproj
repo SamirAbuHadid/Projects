@@ -118,6 +118,7 @@
     <Compile Include="App_Start\NinjectWebCommon.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\AdminController.cs" />
+    <Compile Include="Controllers\AdminProductImageController.cs" />
     <Compile Include="Controllers\CartController.cs" />
     <Compile Include="Controllers\CategoryController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -132,6 +133,7 @@
     <Compile Include="Infrastructure\Binders\CartModelBinder.cs" />
     <Compile Include="Infrastructure\NinjectDependencyResolver.cs" />
     <Compile Include="Models\CartListViewModel.cs" />
+    <Compile Include="Models\GalleryViewModel.cs" />
     <Compile Include="Models\NavViewModel.cs" />
     <Compile Include="Models\OrderListViewModel.cs" />
     <Compile Include="Models\PagingInfo.cs" />
@@ -355,6 +357,7 @@
     <Content Include="Views\Category\Edit.cshtml" />
     <Content Include="Views\Order\Completed.cshtml" />
     <Content Include="Views\Order\Index.cshtml" />
+    <Content Include="Views\AdminProductImage\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

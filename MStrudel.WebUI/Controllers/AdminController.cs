@@ -61,7 +61,6 @@ namespace MStrudel.WebUI.Controllers
                     modelParam.Product.ImageMimeType = image.ContentType;
                     image.InputStream.Read(modelParam.Product.ImageData, 0, image.ContentLength);
                 }
-                //var resizedImage = new WebImage(modelParam.Product.ImageData);
                 var resizedImage = new WebImage(modelParam.Product.ImageData).Resize(200, 200, true, true).Crop(left: 1, top: 1);
                 modelParam.Product.ImageData = resizedImage.GetBytes();
 
