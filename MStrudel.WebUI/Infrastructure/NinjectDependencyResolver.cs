@@ -35,6 +35,7 @@ namespace MStrudel.WebUI.Infrastructure
 
             var emailSettings = new EmailSettings();
             _kernel.Bind<IOrderProcessor>().To<EmailOrderProcessor>().WithConstructorArgument("settings", emailSettings);
+            _kernel.Bind<IProductImagesRepository>().To<EFProductImagesRepository>();
         }
     }
 }
