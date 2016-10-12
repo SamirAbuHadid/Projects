@@ -16,6 +16,7 @@ namespace MStrudel.WebUI.Controllers
             _productRepository = prodRepository;
         }
 
+        [HttpGet]
         public ActionResult Index(int categoryId = 0, int page = 1)
         {
             var model = new ProductListViewModel();

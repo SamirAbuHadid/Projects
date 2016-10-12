@@ -15,6 +15,7 @@ namespace MStrudel.WebUI.Controllers
             _productRepository = productRepository;
         }
 
+        [HttpGet]
         public ViewResult Index(Cart cart, string returnUrl)
         {
             return View(new CartListViewModel { Cart = cart, ReturnUrl = returnUrl });

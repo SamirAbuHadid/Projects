@@ -18,11 +18,13 @@ namespace MStrudel.WebUI.Controllers
             _orderProcessor = proc;
         }
 
+        [HttpGet]
         public ViewResult Index()
         {
             return View(_orderRepository.Orders.OrderByDescending(o => o.DeliveryTime).ToList());
         }
 
+        [HttpDelete]
         public ActionResult Delete(int orderId)
         {
             _orderRepository.DeleteOrder(orderId);
