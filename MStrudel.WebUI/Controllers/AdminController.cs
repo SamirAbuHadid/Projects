@@ -100,7 +100,7 @@ namespace MStrudel.WebUI.Controllers
             return View("Edit", model);
         }
 
-        [HttpPost]
+        [HttpDelete]
         public ActionResult Delete(int productId)
         {
             Product deletedProduct = _productRepository.DeleteProduct(productId);

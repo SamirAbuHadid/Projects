@@ -14,6 +14,7 @@ namespace MStrudel.WebUI.Controllers
             _categoryRepository = repository;
         }
 
+        [HttpGet]
         public ActionResult Index()
         {
             return View(_categoryRepository.Categories.OrderBy(c => c.SortId));
@@ -41,6 +42,7 @@ namespace MStrudel.WebUI.Controllers
             return RedirectToAction("Index", "Category");
         }
 
+        [HttpDelete]
         public ActionResult Delete(int categoryId)
         {
             if(categoryId != 0)
