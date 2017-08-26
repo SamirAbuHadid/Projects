@@ -55,13 +55,6 @@
 	@Html.ActionLink("Замовити", "AddOrder", "Order", new { cart = Model.Cart }, new { @class = "btn btn-primary" })
 </div>
 
-@*<script type="text/javascript">
-	$(document).ready(function () {
-		$('#Quantity').change(function () {
-			alert('Quantity changed');
-		});
-	});
-</script>*@
 <script type="text/javascript">
 	$(document).ready(function () {
 		$(document).on('change', 'input', function () {

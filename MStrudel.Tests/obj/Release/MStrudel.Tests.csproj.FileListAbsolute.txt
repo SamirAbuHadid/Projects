@@ -1,5 +1,0 @@
-D:\Projects\MStrudel\MStrudel.Tests\bin\Release\MStrudel.Tests.dll
-D:\Projects\MStrudel\MStrudel.Tests\bin\Release\MStrudel.Tests.pdb
-D:\Projects\MStrudel\MStrudel.Tests\obj\Release\MStrudel.Tests.csprojResolveAssemblyReference.cache
-D:\Projects\MStrudel\MStrudel.Tests\obj\Release\MStrudel.Tests.dll
-D:\Projects\MStrudel\MStrudel.Tests\obj\Release\MStrudel.Tests.pdb
