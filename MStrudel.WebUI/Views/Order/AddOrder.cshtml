@@ -20,7 +20,7 @@
 
 @using(Html.BeginForm("AddOrder", "Order"))
 {
-	<div class="panel">
+	<div class="panel panel-default">
 		<div class="panel-heading">
 			<h4>Нове замовлення</h4>
 		</div>
@@ -28,113 +28,102 @@
 		<div class="panel-body">
 			<div class="form-group">
 				@Html.LabelFor(o => Model.Order.Name)
-				@Html.TextBoxFor(o => Model.Order.Name, new { @class = "form-control" })
+				@Html.TextBoxFor(o => Model.Order.Name, new { @class = "form-control add-order-name" })
 				@Html.ValidationMessageFor(o => Model.Order.Name)
 			</div>
 			<div class="form-group">
 				@Html.LabelFor(o => Model.Order.LastName)
-				@Html.TextBoxFor(o => Model.Order.LastName, new { @class = "form-control" })
+				@Html.TextBoxFor(o => Model.Order.LastName, new { @class = "form-control add-order-last-name" })
 				@Html.ValidationMessageFor(o => Model.Order.LastName)
 			</div>
 			<div class="form-group">
-				@Html.LabelFor(o => Model.Order.Phone)
-				@Html.TextBoxFor(o => Model.Order.Phone, new { @class = "form-control", @id="Phone" })
-				@Html.ValidationMessageFor(o => Model.Order.Phone)
-			</div>
-			<div class="form-group">
 				@Html.LabelFor(o => Model.Order.Adress)
-				@Html.TextBoxFor(o => Model.Order.Adress, new { @class = "form-control" })
+				@Html.TextBoxFor(o => Model.Order.Adress, new { @class = "form-control add-order-address" })
 				@Html.ValidationMessageFor(o => Model.Order.Adress)
 			</div>
 			<div class="form-group">
 				@Html.LabelFor(o => Model.Order.DeliveryTime)
-				@Html.TextBoxFor(o => Model.Order.DeliveryTime, "{0:dd.MM.yyyy}", new { @class = "text", id = "DeliveryTime" })
+				@Html.TextBoxFor(o => Model.Order.DeliveryTime, "{0:dd.MM.yyyy}", new { @class = "text form-control add-order-delivery-time", id = "DeliveryTime" })
 				@Html.ValidationMessageFor(o => Model.Order.DeliveryTime)
 			</div>
 			<div class="form-group">
+				@Html.LabelFor(o => Model.Order.Phone)
+				@Html.TextBoxFor(o => Model.Order.Phone, new { @class = "form-control add-order-phone", @id="Phone" })
+				@Html.ValidationMessageFor(o => Model.Order.Phone)
+			</div>
+			<div class="form-group">
 				@Html.LabelFor(o => Model.Order.Email)
-				@Html.TextBoxFor(o => Model.Order.Email, new { @class = "form-control"})
+				@Html.TextBoxFor(o => Model.Order.Email, new { @class = "form-control add-order-email" })
 				@Html.ValidationMessageFor(o => Model.Order.Email)
 			</div>
 			<div class="form-group">
 				@Html.LabelFor(o => Model.Order.Comment)
-				@Html.TextAreaFor(o => Model.Order.Comment, new { @class = "form-control", rows = 5 })
+				@Html.TextAreaFor(o => Model.Order.Comment, new { @class = "form-control add-order-comment", rows = 5 })
 				@Html.ValidationMessageFor(o => Model.Order.Comment)
 			</div>
 		</div>
+
 		<div class="panel-footer">
 			<input type="submit" value="Зберегти" class="btn btn-primary"/>
 		</div>
 	</div>
 
-	if(@Model.Cart.Lines.ToList().Count > 0)
-	{ 
-		<div class="col-xs-12 panel-collapse">
-			<h4>Ваш кошик</h4>
-			<table class="table">
-				<thead>
-					<tr>
-						<th class="text-left">Кількість</th>
-						<th>Продукт</th>
-						<th class="text-right">Ціна</th>
-						<th class="text-right">Сума</th>
-					</tr>
-				</thead>
-				<tbody>
-					@foreach(var item in Model.Cart.Lines)
-					{
+	if (@Model.Cart.Lines.Count > 0)
+	{
+		<div class="panel panel-default">
+			<div class="panel-heading">
+				<h4>Ваш кошик</h4>
+			</div>
+
+			<div class="panel-body">
+				<table class="table">
+					<thead>
 						<tr>
-							<td class="text-left">@item.Quantity</td>
-							<td class="text-left">@item.Product.Name</td>
-							<td class="text-right">@item.Product.Price.ToString("c")</td>
-							<td class="text-right">@((item.Quantity * item.Product.Price).ToString("c"))</td>
+							<th class="text-left">Кількість</th>
+							<th>Продукт</th>
+							<th class="text-right">Ціна</th>
+							<th class="text-right">Сума</th>
 						</tr>
-					}
-				</tbody>
-			</table>
+					</thead>
+					<tbody>
+						@foreach (var item in Model.Cart.Lines)
+						{
+							<tr>
+								<td class="text-left">@item.Quantity</td>
+								<td class="text-left">@item.Product.Name</td>
+								<td class="text-right">@item.Product.Price.ToString("c")</td>
+								<td class="text-right">@((item.Quantity * item.Product.Price).ToString("c"))</td>
+							</tr>
+						}
+					</tbody>
+					<tfoot>
+						<tr>
+							<td class="text-right" colspan="3"><b>Всього:</b></td>
+							<td class="text-right"><b>@Model.Cart.TotalValue().ToString("c")</b></td>
+						</tr>
+					</tfoot>
+				</table>
+			</div>
 		</div>
 	}
 }
 
-<!-- Инициализация виджета "Bootstrap datetimepicker" -->
-@*<script type="text/javascript">
-	$(function () {
-		//Идентификатор элемента HTML (например: #datetimepicker1), для которого необходимо инициализировать виджет "Bootstrap datetimepicker"
-		$('#DeliveryTime').datepicker(
-			{
-				dateFormat: "dd.mm.yy",
-				currentText: "Now",
-				dayNamesMin: ["Нд", "Пн", "Вт", "Ср", "Чт", "Пт", "Сб"],
-				monthNames: ["Січень", "Лютий", "Березень", "Квітень", "Травень", "Червень", "Липень", "Серпень", "Вересень", "Жовтень", "Листопад", "Грудень"],
-				monthNamesShort: ["Січ", "Лют", "Бер", "Квіт", "Трав", "Черв", "Лип", "Серп", "Вер", "Жовт", "Лист", "Груд"],
-				changeMonth: true,
-				showButtonPanel: true,
-				//onSelect: function (DeliveryTime) {
-				//	var date = new Date(DeliveryTime);
-				//	alert(date);
-				//}
-			});
-		$('#DeliveryTime').datepicker('setDate', "+1");
-		$('#DeliveryTime').datepicker('dateFormat', "dd.mm.yy");
-		$('#datepicker').datepicker($.datepicker.regional['uk-UA']);
-	});
-</script>*@
 <script type="text/javascript">
 	$(function () {
 		$.validator.addMethod('date',
-		function (value, element) {
-			if (this.optional(element)) {
-				return true;
-			}
-			var ok = true;
-			try {
-				$.datepicker.parseDate('dd/mm/yy', value);
-			}
-			catch (err) {
-				ok = false;
-			}
-			return ok;
-		});
+			function (value, element) {
+				if (this.optional(element)) {
+					return true;
+				}
+				var ok = true;
+				try {
+					$.datepicker.parseDate('dd/mm/yy', value);
+				}
+				catch (err) {
+					ok = false;
+				}
+				return ok;
+			});
 		$("#DeliveryTime").datepicker(
 			{
 				dateFormat: 'dd/mm/yy',

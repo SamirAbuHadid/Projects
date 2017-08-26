@@ -5,9 +5,13 @@
 	Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
 
-<div class="panel">
+<div class="panel panel-default">
 	<div class="panel-heading">
 		<h3>Категорії</h3>
+	</div>
+	<div class="panel-heading">
+		@Html.ActionLink("Додати категорію", "Edit", new { categoryId = 0 }, new { @class = "btn btn-default" })
+		@Html.ActionLink("Назад", "Index", "Product", null, new { @class = "btn btn-primary" })
 	</div>
 
 	<div class="panel-body">
@@ -19,7 +23,7 @@
 				<th>Дії</th>
 			</tr>
 
-			@foreach(var item in Model)
+			@foreach (var item in Model)
 			{
 				<tr>
 					<td>@item.CategoryId</td>
@@ -31,10 +35,5 @@
 				</tr>
 			}
 		</table>
-	</div>
-
-	<div class="panel-footer">
-		@Html.ActionLink("Додати категорію", "Edit", new { categoryId = 0 }, new { @class = "btn btn-default" })
-		@Html.ActionLink("Назад", "Index", "Product", null, new { @class = "btn btn-warning" })
 	</div>
 </div>
