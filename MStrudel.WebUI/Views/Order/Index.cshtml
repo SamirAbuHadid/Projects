@@ -5,108 +5,88 @@
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
 
-<h3>Замовлення</h3>
+<div class="panel panel-default">
+	<div class="panel-heading">
+		<h3>Замовлення</h3>
+	</div>
 
-<div>
-	<table class="table">
-		<tr>
-			<th>@Html.DisplayNameFor(model => Model[0].Name)</th>
-			<th>@Html.DisplayNameFor(model => Model[0].LastName)</th>
-			<th>@Html.DisplayNameFor(model => Model[0].Adress)</th>
-			<th>@Html.DisplayNameFor(model => Model[0].Phone)</th>
-			<th>@Html.DisplayNameFor(model => Model[0].DeliveryTime)</th>
-			<th>@Html.DisplayNameFor(model => Model[0].Comment)</th>
-			<th>Дії</th>
-		</tr>
+	<div class="panel-heading">
+		@Html.ActionLink("Нове замовлення", "Create", null, new { @class = "btn btn-default" })
+		@Html.ActionLink("Назад", "Index", "Product", null, new { @class = "btn btn-primary" })
+	</div>
 
-	@for(int i = 0; i < Model.Count(); i++)
-	{
-	string packageName = "package" + i;
-	string dataTargetName = ".packageDetails" + i;
-	string nestedClassName = "packageDetails" + i;
-	string accordionName = "accordion" + i;
+	<div class="panel-body">
+		<table class="table">
+			<tr>
+				<th>@Html.DisplayNameFor(model => Model[0].Name)</th>
+				<th>@Html.DisplayNameFor(model => Model[0].LastName)</th>
+				<th>@Html.DisplayNameFor(model => Model[0].Adress)</th>
+				<th>@Html.DisplayNameFor(model => Model[0].Phone)</th>
+				<th>@Html.DisplayNameFor(model => Model[0].DeliveryTime)</th>
+				<th>@Html.DisplayNameFor(model => Model[0].Comment)</th>
+				<th>Дії</th>
+			</tr>
 
-	<tr id="@packageName" class="accordion-toggle" data-toggle="collapse" data-target="@dataTargetName" style="background-color:#94d1ae">
-		<td>@Html.DisplayFor(modelItem => Model[i].Name)</td>
-		<td>@Html.DisplayFor(modelItem => Model[i].LastName)</td>
-		<td>@Html.DisplayFor(modelItem => Model[i].Adress)</td>
-		<td>@Html.DisplayFor(modelItem => Model[i].Phone)</td>
-		<td>@Html.DisplayFor(modelItem => Model[i].DeliveryTime)</td>
-		<td>@Html.DisplayFor(modelItem => Model[i].Comment)</td>
-		<td>
-			<a href="@Url.Action("Delete", "Order", new { orderId = Model[i].OrderId })" class="btn btn-danger ">
-				<span class="glyphicon glyphicon-trash pull-right" />
-			</a>
-		</td>
-		<td>
-			<i class="indicator glyphicon glyphicon-chevron-up pull-right"></i>
-		</td>
-	</tr>
-		<tr>
-			<td colspan="8" class="hiddenRow">
-				<div class="accordion-body collapse @nestedClassName" id="@accordionName">
-					<table class="table-bordered" cellpadding="0" cellspacing="0">
-						<thead>
-							<tr>
-								<th>Товар</th>
-								<th>Кількість</th>
-								<th>Ціна</th>
-								<th>Сума</th>
-							</tr>
-						</thead>
-						<tbody>
-							@foreach(var prod in Model[i].OrderedProducts) 
-							{ 
-								<tr>
-									<td>@prod.Product.Name</td>
-									<td class="text-center">@prod.Quantity</td>
-									<td>@prod.Price.ToString("c")</td>
-									<td>@((prod.Price * prod.Quantity).ToString("c"))</td>
-								</tr>
-							}
-						</tbody>
-						<tfoot>
-							<tr>
-								<td></td>
-								<td></td>
-								<td><b>Вартість замовлення:</b></td>
-								<td>@Model[i].OrderedProducts.Sum(p => p.Quantity*p.Price).ToString("c")</td>
-							</tr>
-						</tfoot>
-					</table>
-				</div>
-			</td>
-		</tr>
-	}
+			@for (int i = 0; i < Model.Count(); i++)
+			{
+				string packageName = "package" + i;
+				string dataTargetName = ".packageDetails" + i;
+				string nestedClassName = "packageDetails" + i;
+				string accordionName = "accordion" + i;
 
-	</table>
+				<tr id="@packageName" class="accordion-toggle" data-toggle="collapse" data-target="@dataTargetName" style="background-color:#94d1ae">
+					<td>@Html.DisplayFor(modelItem => Model[i].Name)</td>
+					<td>@Html.DisplayFor(modelItem => Model[i].LastName)</td>
+					<td>@Html.DisplayFor(modelItem => Model[i].Adress)</td>
+					<td>@Html.DisplayFor(modelItem => Model[i].Phone)</td>
+					<td>@Html.DisplayFor(modelItem => Model[i].DeliveryTime)</td>
+					<td>@Html.DisplayFor(modelItem => Model[i].Comment)</td>
+					<td>
+						<a href="@Url.Action("Delete", "Order", new { orderId = Model[i].OrderId })" class="btn btn-danger ">
+							<span class="glyphicon glyphicon-trash pull-right" />
+						</a>
+					</td>
+					<td>
+						<i class="indicator glyphicon glyphicon-chevron-up pull-right"></i>
+					</td>
+				</tr>
+				<tr>
+					<td colspan="8" class="hiddenRow">
+						<div class="accordion-body collapse @nestedClassName" id="@accordionName">
+							<table class="table-bordered" cellpadding="0" cellspacing="0">
+								<thead>
+									<tr>
+										<th>Товар</th>
+										<th>Кількість</th>
+										<th>Ціна</th>
+										<th>Сума</th>
+									</tr>
+								</thead>
+								<tbody>
+									@foreach (var prod in Model[i].OrderedProducts)
+									{
+										<tr>
+											<td>@prod.Product.Name</td>
+											<td class="text-center">@prod.Quantity</td>
+											<td>@prod.Price.ToString("c")</td>
+											<td>@((prod.Price * prod.Quantity).ToString("c"))</td>
+										</tr>
+}
+								</tbody>
+								<tfoot>
+									<tr>
+										<td></td>
+										<td></td>
+										<td><b>Вартість замовлення:</b></td>
+										<td>@Model[i].OrderedProducts.Sum(p => p.Quantity * p.Price).ToString("c")</td>
+									</tr>
+								</tfoot>
+							</table>
+						</div>
+					</td>
+				</tr>
+			}
+
+		</table>
+	</div>
 </div>
-
-@Html.ActionLink("Нове замовлення", "Create", null, new { @class = "btn btn-default" })
-@Html.ActionLink("Назад", "Index", "Product", null, new { @class = "btn btn-warning" })
-
-<script type="text/javascript">
-	//$("div[id*='accordion']").each(function (i) {
-	//	var passedEl = $(this);
-	//	$(this).on('shown.bs.collapse', function (i) {
-	//		var currentEl = $(this);
-	//		if (currentEl.get(0) == passedEl.get(0)) {
-	//			//$("tr[id^='package1'] i.indicator").removeClass("glyphicon-chevron-up").addClass("glyphicon-chevron-down");
-	//			$("tr[id=='package')] i.indicator").removeClass("glyphicon-chevron-up").addClass("glyphicon-chevron-down");
-	//			return false;
-	//		}
-	//	});
-	//});
-	//$("div[id*='accordion']").each(function (i) {
-	//	$(this).on('hidden.bs.collapse', function () {
-	//		$("tr[id^='package'] i.indicator").removeClass("glyphicon-chevron-down").addClass("glyphicon-chevron-up");
-	//	});
-	//});
-
-	//$('#accordion2').on('shown.bs.collapse', function () {
-	//	$("#package2 i.indicator").removeClass("glyphicon-chevron-up").addClass("glyphicon-chevron-down");
-	//});
-	//$('#accordion2').on('hidden.bs.collapse', function () {
-	//	$("#package2 i.indicator").removeClass("glyphicon-chevron-down").addClass("glyphicon-chevron-up");
-	//});
-</script>
