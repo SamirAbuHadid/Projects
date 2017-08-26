@@ -95,7 +95,7 @@ namespace MStrudel.WebUI.Controllers
                     }
                 );
             }
-            model.Categories[0].Selected = true;
+            model.Categories[0].Selected = true; 
 
             return View("Edit", model);
         }
