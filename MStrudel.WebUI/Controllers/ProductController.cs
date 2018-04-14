@@ -19,19 +19,20 @@ namespace MStrudel.WebUI.Controllers
         [HttpGet]
         public ActionResult Index(int categoryId = 0, int page = 1)
         {
-            var model = new ProductListViewModel();
-            model.PagingInfo = new PagingInfo
+            var model = new ProductListViewModel
             {
-                CurrentPage = page,
-                ItemsPerPage = ItemsOnPage,
-                TotalItems = categoryId != 0
+                PagingInfo = new PagingInfo
+                {
+                    CurrentPage = page,
+                    ItemsPerPage = ItemsOnPage,
+                    TotalItems = categoryId != 0
                             ? _productRepository.Products.Where(p => p.CategoryId == categoryId).Count()
                             : _productRepository.Products.Count()
-            };
-            model.Products = _productRepository.Products
-                .Where((p) =>
+                },
+                Products = _productRepository.Products
+                .Where(p =>
                     {
-                        if(categoryId != 0)
+                        if (categoryId != 0)
                         {
                             return p.CategoryId == categoryId;
                         }
@@ -39,8 +40,9 @@ namespace MStrudel.WebUI.Controllers
                     })
                 .Skip((page - 1) * ItemsOnPage)
                 .Take(ItemsOnPage)
-                .OrderBy(p => p.Name);
-            model.CurrentCategory = categoryId;
+                .OrderBy(p => p.Name),
+                CurrentCategory = categoryId
+            };
 
             return View(model);
         }

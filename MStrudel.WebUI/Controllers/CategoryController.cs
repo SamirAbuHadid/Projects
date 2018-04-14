@@ -42,7 +42,7 @@ namespace MStrudel.WebUI.Controllers
             return RedirectToAction("Index", "Category");
         }
 
-        [HttpDelete]
+        [HttpPost]
         public ActionResult Delete(int categoryId)
         {
             if(categoryId != 0)

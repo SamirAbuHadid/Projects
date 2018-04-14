@@ -61,7 +61,9 @@ namespace MStrudel.WebUI.Controllers
                     modelParam.Product.ImageMimeType = image.ContentType;
                     image.InputStream.Read(modelParam.Product.ImageData, 0, image.ContentLength);
                 }
-                var resizedImage = new WebImage(modelParam.Product.ImageData).Resize(200, 200, true, true).Crop(left: 1, top: 1);
+                var resizedImage = new WebImage(modelParam.Product.ImageData)
+                    .Resize(200, 200, true, true)
+                    .Crop(left: 1, top: 1);
                 modelParam.Product.ImageData = resizedImage.GetBytes();
 
                 Product product = modelParam.Product;
@@ -100,7 +102,7 @@ namespace MStrudel.WebUI.Controllers
             return View("Edit", model);
         }
 
-        [HttpDelete]
+        [HttpPost]
         public ActionResult Delete(int productId)
         {
             Product deletedProduct = _productRepository.DeleteProduct(productId);

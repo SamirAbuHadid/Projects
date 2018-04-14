@@ -6,13 +6,13 @@
     ViewBag.Title = "Штруделі";
 }
 
-@foreach(var p in Model.Products)
+@foreach (var p in Model.Products)
 {
 	<div class="well clearfix">
 		<div class="pull-left" style="margin-right: 10px">
-			@if(p.ImageData != null)
+			@if (p.ImageData != null)
 			{
-				<img class="img-thumbnail" height="200" width="200" style="float:none" src="@Url.Action("GetImage", "Product", new { p.ProductID })" />
+				<img class="img-thumbnail" height="200" width="200" style="float:none" src="@Url.Action("GetImage", "Product", new { p.ProductID })" data-toggle="modal" data-target="#myModal" />
 			}
 			else
 			{
@@ -23,10 +23,46 @@
 			<strong>@p.Name</strong>
 			<span class="pull-right label label-primary ">@p.Price.ToString("c")</span>
 		</h3>
-		<a href="@Url.Action("AddToCart", "Cart", new {productId = p.ProductID, returnUrl = Request.Url.PathAndQuery })" class="btn btn-warning pull-right">
+		<a href="@Url.Action("AddToCart", "Cart", new { productId = p.ProductID, returnUrl = Request.Url.PathAndQuery })" class="btn btn-warning pull-right">
 			<span class="glyphicon glyphicon-shopping-cart pull-right" />
 		</a>
 		<span class="lead" style="white-space: pre-wrap; font-size:medium ">@p.Description</span>
+
+		<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal">
+							<span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
+						</button>
+					</div>
+					<div class="modal-body">
+						<div id="gallery" class="carousel slide" data-interval="false">
+							<div class="carousel-inner">
+								<div class="item active">
+									@*@foreach (var imgUrl in Url.Action("GetImages", "ProductImage", new { p.ProductID }))
+									{
+										<img src=@imgUrl alt="item1">
+										<div class="carousel-caption">
+											<h4>heading 1</h4>
+											<p>This is the description.</p>
+										</div>
+									}*@
+										<img src=@Url.Action("GetImages", "ProductImage", new { p.ProductID }) alt="item1">
+										<div class="carousel-caption">
+											<h4>heading 1</h4>
+											<p>This is the description.</p>
+										</div>
+								</div>
+							</div>
+							<a class="left carousel-control" href="#gallery" role="button" data-slide="prev"><span class="glyphicon glyphicon-chevron-left"></span></a>
+							<a class="right carousel-control" href="#gallery" role="button" data-slide="next"><span class="glyphicon glyphicon-chevron-right"></span></a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
 	</div>
 }
 

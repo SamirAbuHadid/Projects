@@ -20,8 +20,8 @@ namespace MStrudel.WebUI.App_Start
         /// </summary>
         public static void Start() 
         {
-            DynamicModuleUtility.RegisterModule(typeof(OnePerRequestHttpModule));
-            DynamicModuleUtility.RegisterModule(typeof(NinjectHttpModule));
+            //DynamicModuleUtility.RegisterModule(typeof(OnePerRequestHttpModule));
+            //DynamicModuleUtility.RegisterModule(typeof(NinjectHttpModule));
             bootstrapper.Initialize(CreateKernel);
         }
         

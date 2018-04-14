@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.Web.Mvc;
 using System.ComponentModel.DataAnnotations.Schema;
-
+using System.Collections.Generic;
 
 namespace MStrudel.Domain.Entities
 {
@@ -40,6 +40,7 @@ namespace MStrudel.Domain.Entities
 		[HiddenInput(DisplayValue = false)]
 		public string ImageMimeType { get; set; }
 
+        public List<int> ImageIds { get; set; }
 
 		[Display(Name = "Категорія")]
 		[HiddenInput(DisplayValue = false)]

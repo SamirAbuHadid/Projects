@@ -26,7 +26,7 @@ namespace MStrudel.WebUI.Controllers
             return View(model);
         }
 
-        [HttpPut]
+        [HttpPost]
         public ActionResult Edit(int productId, HttpPostedFileBase image = null)
         {
             if(ModelState.IsValid)
@@ -48,7 +48,7 @@ namespace MStrudel.WebUI.Controllers
             return RedirectToAction("Index", new { productId = productId });
         }
 
-        [HttpDelete]
+        [HttpPost]
         public RedirectToRouteResult Delete(int imageId, int productId)
         {
             ProductImage productImage = _repository.DeleteProductImage(imageId);
