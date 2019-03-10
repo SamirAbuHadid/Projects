@@ -24,7 +24,7 @@ namespace MStrudel.WebUI.Controllers
             return View(_orderRepository.Orders.OrderByDescending(o => o.DeliveryTime).ToList());
         }
 
-        [HttpDelete]
+        [HttpPost]
         public ActionResult Delete(int orderId)
         {
             _orderRepository.DeleteOrder(orderId);
@@ -39,21 +39,23 @@ namespace MStrudel.WebUI.Controllers
         [HttpPost]
         public ActionResult AddOrder(OrderListViewModel model, Cart cart)
         {
-            // Change to some message
             if(cart.Lines.Count() == 0)
             {
                 ModelState.AddModelError("", "Вибачте, Ваша корзина порожня! Неможливо зареєструвати замовлення");
             }
 
-            if(ModelState.IsValid)
+            if (ModelState.IsValid)
             {
-                Order order = new Order { OrderedProducts = new List<OrderedProduct>() };
-                order.Name = model.Order.Name;
-                order.LastName = model.Order.LastName;
-                order.Phone = model.Order.Phone;
-                order.DeliveryTime = model.Order.DeliveryTime;
-                order.Adress = model.Order.Adress;
-                order.Comment = model.Order.Comment;
+                var order = new Order
+                {
+                    OrderedProducts = new List<OrderedProduct>(),
+                    Name = model.Order.Name,
+                    LastName = model.Order.LastName,
+                    Phone = model.Order.Phone,
+                    DeliveryTime = model.Order.DeliveryTime,
+                    Adress = model.Order.Adress,
+                    Comment = model.Order.Comment
+                };
 
                 foreach(var cartLine in cart.Lines)
                 {

@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2013
-VisualStudioVersion = 12.0.21005.1
+# Visual Studio 15
+VisualStudioVersion = 15.0.27428.2037
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MStrudel.WebUI", "MStrudel.WebUI\MStrudel.WebUI.csproj", "{6112252B-1BCB-42BB-A68A-A16539E3C734}"
 EndProject
@@ -9,22 +9,9 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MStrudel.Domain", "MStrudel
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MStrudel.Tests", "MStrudel.Tests\MStrudel.Tests.csproj", "{CED7BEA4-31A6-4197-B18F-6D60826D3469}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MStrudel.Database", "MStrudel.Database\MStrudel.Database.csproj", "{42172772-D91B-4629-AF4C-9D1D41D9F9BB}"
+EndProject
 Global
-	GlobalSection(TeamFoundationVersionControl) = preSolution
-		SccNumberOfProjects = 4
-		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
-		SccTeamFoundationServer = http://samir:8080/tfs/defaultcollection
-		SccLocalPath0 = .
-		SccProjectUniqueName1 = MStrudel.WebUI\\MStrudel.WebUI.csproj
-		SccProjectName1 = MStrudel.WebUI
-		SccLocalPath1 = MStrudel.WebUI
-		SccProjectUniqueName2 = MStrudel.Domain\\MStrudel.Domain.csproj
-		SccProjectName2 = MStrudel.Domain
-		SccLocalPath2 = MStrudel.Domain
-		SccProjectUniqueName3 = MStrudel.Tests\\MStrudel.Tests.csproj
-		SccProjectName3 = MStrudel.Tests
-		SccLocalPath3 = MStrudel.Tests
-	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
@@ -42,8 +29,15 @@ Global
 		{CED7BEA4-31A6-4197-B18F-6D60826D3469}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CED7BEA4-31A6-4197-B18F-6D60826D3469}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CED7BEA4-31A6-4197-B18F-6D60826D3469}.Release|Any CPU.Build.0 = Release|Any CPU
+		{42172772-D91B-4629-AF4C-9D1D41D9F9BB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{42172772-D91B-4629-AF4C-9D1D41D9F9BB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{42172772-D91B-4629-AF4C-9D1D41D9F9BB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{42172772-D91B-4629-AF4C-9D1D41D9F9BB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {E0B85A14-C22E-4FB4-8A12-A24CD2A9B3DB}
 	EndGlobalSection
 EndGlobal
