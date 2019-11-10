@@ -4,7 +4,7 @@ using System.Web.Mvc;
 
 namespace MStrudel.Domain.Entities
 {
-	[Table("Category")]
+	[Table("Categories")]
 	public class Category
 	{
 		[HiddenInput(DisplayValue = false)]

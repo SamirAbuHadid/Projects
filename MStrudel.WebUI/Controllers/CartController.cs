@@ -25,9 +25,7 @@ namespace MStrudel.WebUI.Controllers
         {
             Product product = _productRepository.Products.FirstOrDefault(p => p.ProductID == productId);
             if(product != null)
-            {
                 cart.AddItem(product, 1);
-            }
 
             return RedirectToAction("Index", new { returnUrl });
         }
@@ -36,9 +34,7 @@ namespace MStrudel.WebUI.Controllers
         {
             Product product = _productRepository.Products.FirstOrDefault(p => p.ProductID == productId);
             if(product != null)
-            {
                 cart.DeleteItem(product);
-            }
 
             return RedirectToAction("Index", new { returnUrl });
         }
@@ -47,9 +43,7 @@ namespace MStrudel.WebUI.Controllers
         {
             Product product = _productRepository.Products.FirstOrDefault(p => p.ProductID == productId);
             if(product != null)
-            {
                 cart.ChangeQuantity(product, quantity);
-            }
 
             return RedirectToAction("Index");
         }

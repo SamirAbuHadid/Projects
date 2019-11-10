@@ -117,3 +117,5 @@ CREATE TABLE [dbo].[Categories](
 	[CategoryID] ASC
 ))
 
+insert into Categories (Name, SortId)
+values ('Солодкі', 5)

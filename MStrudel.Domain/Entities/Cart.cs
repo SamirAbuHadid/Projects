@@ -12,14 +12,11 @@ namespace MStrudel.Domain.Entities
         public void AddItem(Product product, int quantity)
         {
             CartLine item = _lines.Where(p => p.Product.ProductID == product.ProductID).FirstOrDefault();
-            if(item == null)
-            {
+
+            if (item == null)
                 _lines.Add(new CartLine { Product = product, Quantity = quantity });
-            }
             else
-            {
                 item.Quantity += quantity;
-            }
         }
 
         public void DeleteItem(Product product)
@@ -31,16 +28,13 @@ namespace MStrudel.Domain.Entities
         {
             CartLine item = _lines.Where(p => p.Product.ProductID == product.ProductID).FirstOrDefault();
 
-            if(item == null)
-            {
+            if (item == null)
                 _lines.Add(new CartLine { Product = product, Quantity = quantity });
-            }
 
             var newQuantity = item.Quantity + quantity;
-            if(newQuantity == 0)
-            {
+            if (newQuantity == 0)
                 _lines.Remove(item);
-            }
+
             item.Quantity = newQuantity;
         }
 
@@ -53,6 +47,5 @@ namespace MStrudel.Domain.Entities
         {
             return _lines.Sum(p => p.Product.Price * p.Quantity);
         }
-
     }
 }

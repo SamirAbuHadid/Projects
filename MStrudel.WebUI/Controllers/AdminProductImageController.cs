@@ -60,9 +60,8 @@ namespace MStrudel.WebUI.Controllers
         {
             ProductImage productImage = _repository.ProductImages.FirstOrDefault(p => p.ImageID == imageId);
             if(productImage != null)
-            {
                 return File(productImage.ImageData, productImage.ImageMimeType);
-            }
+
             return null;
         }
     }

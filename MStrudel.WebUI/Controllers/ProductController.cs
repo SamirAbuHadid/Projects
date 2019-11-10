@@ -50,11 +50,8 @@ namespace MStrudel.WebUI.Controllers
         public FileContentResult GetImage(int productId)
         {
             Product product = _productRepository.Products.FirstOrDefault(p => p.ProductID == productId);
-            if(product != null)
-            {
-                return File(product.ImageData, product.ImageMimeType);
-            }
-            return null;
+
+            return product != null ? File(product.ImageData, product.ImageMimeType) : null;
         }
     }
 }

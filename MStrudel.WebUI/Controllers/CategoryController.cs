@@ -25,9 +25,7 @@ namespace MStrudel.WebUI.Controllers
             Category model = _categoryRepository.Categories.FirstOrDefault(c => c.CategoryId == categoryId);
 
             if(model == null)
-            {
                 model = new Category();
-            }
 
             return View(model);
         }
@@ -36,9 +34,8 @@ namespace MStrudel.WebUI.Controllers
         public ActionResult Edit(Category category)
         {
             if(ModelState.IsValid)
-            {
                 _categoryRepository.SaveCategory(category);
-            }
+
             return RedirectToAction("Index", "Category");
         }
 
@@ -46,9 +43,7 @@ namespace MStrudel.WebUI.Controllers
         public ActionResult Delete(int categoryId)
         {
             if(categoryId != 0)
-            {
                 _categoryRepository.DeleteCategory(categoryId);
-            }
 
             return RedirectToAction("Index");
         }
